@@ -1,0 +1,66 @@
+CREATE TABLE payment_type (
+ payment_id varchar(2) NOT NULL,
+ payment_type varchar(55) NOT NULL,
+ CONSTRAINT payment_type_pk PRIMARY KEY (payment_id)) ;
+
+CREATE TABLE payment (
+ payment_id varchar(2) NOT NULL,
+ payment_type_payment_id varchar(2) NOT NULL,
+ CONSTRAINT payment_pk PRIMARY KEY (payment_id) ,
+ CONSTRAINT payment_payment_type FOREIGN KEY (payment_type_payment_id) REFERENCES payment_type (payment_id) ) ;
+
+CREATE TABLE customer (
+ customer_id varchar(2) NOT NULL,
+ first_name varchar(55) NOT NULL,
+ last_name varchar(55) NOT NULL,
+ phone Number NOT NULL,
+ address varchar(55) NOT NULL,
+ delivery_address varchar(255) NOT NULL,
+ payment_info varchar(2) NOT NULL,
+ CONSTRAINT customer_pk PRIMARY KEY ( customer_id) , CONSTRAINT customer_fk FOREIGN KEY (payment_info) REFERENCES payment (payment_id)) ;
+
+CREATE TABLE employees (
+ employee_id Number NOT NULL,
+ phonenumber Number NOT NULL,
+ employee_name varchar(55) NOT NULL,
+ CONSTRAINT employees_pk PRIMARY KEY (employee_id) ) ;
+
+ 
+ CREATE TABLE type (
+ type_id varchar(10),
+ type VARCHAR(55), 
+ CONSTRAINT type_pk PRIMARY KEY (type_id));
+
+ CREATE TABLE restaurants (
+ work_hours number NOT NULL,
+ phone_number Number NOT NULL,
+ name varchar(255) NOT NULL,
+ type_id varchar(10) NOT NULL,
+ restaurants_id varchar(5) NOT NULL,
+ CONSTRAINT restaurants_pk PRIMARY KEY (restaurants_id),
+ CONSTRAINT restaurants_type FOREIGN KEY (type_id) REFERENCES type (type_id));
+
+CREATE TABLE menu (
+ restaurants_id varchar(5) NOT NULL,
+ item_number varchar(8) NOT NULL,
+ item_name varchar(30) NOT NULL,
+ price Number NOT NULL, 
+ CONSTRAINT menu_pk PRIMARY KEY (item_number ),
+ CONSTRAINT menu_restaurants FOREIGN KEY (restaurants_id) REFERENCES restaurants (restaurants_id)) ;
+
+CREATE TABLE orders (
+ order_id Number NOT NULL,
+ customer_id Number NOT NULL,
+ employee_id Number NOT NULL,
+ total_price Number NOT NULL,
+ vehciel_id varchar(7) NOT NULL,
+ CONSTRAINT orders_pk PRIMARY KEY (order_id),
+ CONSTRAINT emp_fk FOREIGN KEY (employee_id) REFERENCES employees (employee_id) ) ;
+
+CREATE TABLE place_order (
+ order_id Number NOT NULL,
+ restaurants_id varchar(5) NOT NULL,
+ order_time TIMESTAMP NOT NULL,
+ CONSTRAINT place_order_pk PRIMARY KEY (order_id,restaurants_id),
+ CONSTRAINT place_order_restaurants FOREIGN KEY (restaurants_id) REFERENCES restaurants (restaurants_id),
+ CONSTRAINT place_order_orders FOREIGN KEY (order_id) REFERENCES orders (order_id)) ;
