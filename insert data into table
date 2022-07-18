@@ -1,0 +1,91 @@
+INSERT INTO payment_type (payment_id, payment_type) VALUES ('A', 'cash');
+INSERT INTO payment_type (payment_id, payment_type) VALUES ('B', 'apple pay');
+INSERT INTO payment_type (payment_id, payment_type) VALUES ('C', 'credit card');
+select * from payment_type;
+
+INSERT INTO payment (payment_id, payment_type_payment_id) VALUES ('A', 'A');
+INSERT INTO payment (payment_id, payment_type_payment_id) VALUES ('B', 'B');
+INSERT INTO payment (payment_id, payment_type_payment_id) VALUES ('C', 'C');
+select * from payment ;
+
+INSERT INTO customer (customer_id, first_name, last_name, phone, address,delivery_address, payment_info)
+VALUES ('c1', 'Sara', 'alharbi', '0234578590', 'Medina', 'the location in ALaziziyah', 'A'); 
+INSERT INTO customer (customer_id, first_name, last_name, phone, address,delivery_address, payment_info)
+VALUES ('c2', 'raghad', 'alharbi', '0239877656', 'Medina', 'the location in sultana', 'B');
+INSERT INTO customer (customer_id, first_name, last_name, phone, address,delivery_address, payment_info)
+VALUES ('c3', 'Rahaf', 'alfahidi', '0239877666', 'Medina', 'the location in ALaziziyah', 'B');
+INSERT INTO customer (customer_id, first_name, last_name, phone, address,delivery_address, payment_info)
+VALUES ('c4', 'Sadeem', 'alharbi', '0239844446', 'Medina', 'the location in sultana', 'C');
+select * from customer; 
+
+INSERT INTO employees (employee_id, phonenumber, employee_name) VALUES ( 1001, 0166777777, 'Ahmad');
+INSERT INTO employees (employee_id, phonenumber, employee_name) VALUES ( 1002, 0166555555, 'Mohmmed');
+INSERT INTO employees (employee_id, phonenumber, employee_name) VALUES ( 1003, 0166444445, 'Taghreed');
+INSERT INTO employees (employee_id, phonenumber, employee_name) VALUES ( 1004, 0133395555, 'Rehab');
+select * from employees
+
+INSERT INTO orders (order_id, customer_id, employee_id, total_price, vehciel_id) 
+VALUES(001, 'c1' , 1001, 70, '3331abc');
+INSERT INTO orders (order_id, customer_id, employee_id, total_price, vehciel_id)
+VALUES(002, 'c2', 1002, 66, '8899dfg');
+INSERT INTO orders (order_id, customer_id, employee_id, total_price, vehciel_id)
+VALUES(003, 'c3', 1003, 80, '5891bnm');
+INSERT INTO orders (order_id, customer_id, employee_id, total_price, vehciel_id)
+VALUES(004, 'c4', 1004, 100, '7789opk');
+select * from  orders ;
+
+INSERT INTO type (type_id, type) VALUES ('T1', 'sea food');
+INSERT INTO type (type_id, type) VALUES ('T2', 'fast food');
+INSERT INTO type (type_id, type) VALUES ('T3', 'arabian');
+INSERT INTO type (type_id, type) VALUES ('T4', 'indian');
+select * from type
+
+INSERT INTO restaurants (work_hours, phone_number, name, type_id, restaurants_id)
+VALUES ( 24, 0555334477, 'McDonald’s', 'T2', 'R1');
+INSERT INTO restaurants (work_hours, phone_number, name, type_id, restaurants_id)
+VALUES ( 12, 067777554, 'Domino’s Pizza', 'T2', 'R2');
+INSERT INTO restaurants (work_hours, phone_number, name, type_id, restaurants_id)
+VALUES ( 6, 055643239, 'Hyderabad house', 'T4', 'R3');
+INSERT INTO restaurants (work_hours, phone_number, name, type_id, restaurants_id)
+VALUES ( 8, 093351887, 'Reef alarab', 'T3', 'R4');
+select * from restaurants
+
+INSERT INTO place_order (order_id, restaurants_id, order_time)
+ VALUES (001, 'R1' ,TO_DATE('12/01/2021 14:08:25', 'MM/DD/YYYY HH24:MI:SS') );
+ INSERT INTO place_order (order_id, restaurants_id, order_time)
+ VALUES (002, 'R3',TO_DATE('12/03/2021 10:20:25', 'MM/DD/YYYY HH24:MI:SS') );
+ INSERT INTO place_order (order_id, restaurants_id, order_time)
+ VALUES (003, 'R2',TO_DATE('12/05/2021 12:08:25', 'MM/DD/YYYY HH24:MI:SS') );
+ select * from place_order
+
+INSERT INTO menu(restaurants_id , item_number , item_name , price )
+VALUES ('R1' , 'I001' , 'chicken burger' , 18 )
+INSERT INTO menu(restaurants_id , item_number , item_name , price )
+VALUES ('R1' , 'I002' , 'chicken caesar salad' , 15 )
+INSERT INTO menu(restaurants_id , item_number , item_name , price )
+VALUES ('R1' , 'I003' , 'cola' , 3 )
+INSERT INTO menu(restaurants_id , item_number , item_name , price )
+VALUES ('R3' , 'I008' , 'fish curry' , 45 )
+INSERT INTO menu(restaurants_id , item_number , item_name , price )
+VALUES ('R3' , 'I009' , 'mution masala' , 43 )
+INSERT INTO menu(restaurants_id , item_number , item_name , price )
+VALUES ('R3' , 'I010' , 'rosa mango' , 20 )
+INSERT INTO menu(restaurants_id , item_number , item_name , price )
+VALUES ('R2' , 'I004' , 'Deluxe feast' , 20 )
+INSERT INTO menu(restaurants_id , item_number , item_name , price )
+VALUES ('R2' , 'I005' , 'italiano feast' , 25 )
+INSERT INTO menu(restaurants_id , item_number , item_name , price )
+VALUES ('R2' , 'I006' , 'Pepperini feast' , 20 )
+INSERT INTO menu(restaurants_id , item_number , item_name , price )
+VALUES ('R2' , 'I007' , 'cola' , 3 )
+INSERT INTO menu(restaurants_id , item_number , item_name , price )
+VALUES ('R4' , 'I011' , 'chicken mandi' , 18 )
+INSERT INTO menu(restaurants_id , item_number , item_name , price )
+VALUES ('R4' , 'I012' , 'maqlubah' , 24 )
+INSERT INTO menu(restaurants_id , item_number , item_name , price )
+VALUES ('R4' , 'I013' , 'mandi meet' , 75 )
+INSERT INTO menu(restaurants_id , item_number , item_name , price )
+VALUES ('R4' , 'I014' , 'pepsi' , 2 )
+select * from menu
+
+
