@@ -1,0 +1,49 @@
+CREATE VIEW numberofORDERS AS
+SELECT customer.customer_id ,customer.first_name, customer.last_name, customer.phone, customer.address,orders.total_price
+FROM customer
+INNER JOIN orders ON orders.customer_id = customer.customer_id;
+
+select * from numberofORDERS
+
+SELECT e.employee_id , e.employee_name, e.phonenumber , c.customer_id,c.first_name, c.last_name, c.phone,
+c.address ,o.total_price
+FROM employees e , customer c , orders o
+WHERE e.employee_id =o.employee_id
+AND o.customer_id=c.customer_id 
+order by employee_name 
+
+ 
+SELECT c.customer_id,c.first_name, c.last_name, c.phone,
+c.address,o.total_price,o.total_price, o.vehciel_id
+FROM customer c , orders o WHERE c.customer_id=o.customer_id;
+ 
+SELECT employees.employee_id , employees.employee_name, employees.phonenumber 
+from employees
+inner join orders on employees.employee_id =orders.employee_id
+inner join customer on customer.customer_id=orders.customer_id;
+
+SELECT c.customer_id,c.first_name, c.last_name, c.phone, c.address , o.total_price , o.vehciel_id , e.employee_name
+FROM customer c , orders o , employees e
+WHERE c.customer_id=o.customer_id and o.employee_id=e.employee_id;
+
+SELECT *
+FROM menu
+INNER JOIN restaurants ON menu.restaurants_id=restaurants.restaurants_id;
+
+SELECT order_id, customer_id, employees.employee_id
+FROM orders left outer join  employees
+on employees.employee_id = orders.employee_id ;
+
+select  count(order_id) , restaurants_id 
+from place_order 
+where restaurants_id = 'R1'
+group by restaurants_id
+
+select (price + (price * 0.15))   /*the price after adding VAT 15% */ 
+from menu 
+where item_name = 'chicken burger'
+
+select total_price , order_id
+from orders 
+where total_price <= (select AVG(total_price) from orders)
+order by order_id
